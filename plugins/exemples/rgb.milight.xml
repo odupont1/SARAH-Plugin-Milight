@@ -1,0 +1,47 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rulemilight_example1" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+<rule id="rulemilight_example1" scope="public">
+<tag>out.action=new Object(); </tag>
+
+<!-- ****************************************************** -->
+<!-- Fichier exemple, si vous utilisez une ampoule RGB,		-->
+<!-- renommez ce fichier en : "milight.xlm"					-->
+<!-- et copiez le a la racine du repertoire : "milight"		-->
+<!-- ****************************************************** -->
+
+<item >Sarah</item>
+<!-- Le plugin est capable de gérer plusieurs commandes à la suite séparées par une virdule -->
+<!-- Attention, les commandes sont envoyées par le pont wifi au dernier groupe activé par un 'ZONE_X_ON/ALL_ON' -->
+
+<one-of>
+	<!-- obligatoire , indique le groupe à contrôler -->
+	<item>colore le salon <tag>out.action.action="RGB.ALL_ON"</tag></item>
+	<item>allume le salon <tag>out.action.action="RGB.ALL_ON,RGB.DISCO_MODE_PREVIOUS"</tag></item>
+	<item>fait clignoter le salon en rouge 5 fois <tag>out.action.action="RGB.ALL_ON,CMD.REPEAT_ON_5,RGB.SET_COLOR_RED,RGB.SET_COLOR_189,CMD.REPEAT_OFF"</tag></item>
+</one-of>
+
+<item repeat="0-1">
+	<one-of>
+		<!-- facultatif , indique le niveau de puissance souhaité -->
+		<!-- le action+=",...." ajoute la commande à la précédente -->
+		<item>faiblement <tag>out.action.action+=",CMD.REPEAT_ON_7,BRIGHTNESS_DOWN,CMD.REPEAT_OFF"</tag></item>
+		<item>à 50%<tag>out.action.action+=",CMD.REPEAT_ON_5,RGB.BRIGHTNESS_UP,CMD.REPEAT_OFF"</tag></item>
+		<item>à fond<tag>out.action.action+=",CMD.REPEAT_ON_9,RGB.BRIGHTNESS_UP,CMD.REPEAT_OFF"</tag></item>
+	</one-of>
+</item>
+
+
+<item repeat="0-1">
+	<one-of>
+		<!-- facultatif , indique la couleur souhaitée (sinon identique à la dernière ou BLANC suivant colore/allume)-->
+		<!-- le action+=",...." ajoute la commande à la précédente -->
+		<item>en blanc<tag>out.action.action+=",RGB.DISCO_MODE_PREVIOUS"</tag></item>
+		<item>en bleu<tag>out.action.action+=",RGB.SET_COLOR_BLUE"</tag></item>
+		<item>en fuchia<tag>out.action.action+=",RGB.SET_COLOR_FUCHIA"</tag></item>
+		<item>en lila<tag>out.action.action+=",RGB.SET_COLOR_LILA"</tag></item>
+		<item>en lavande<tag>out.action.action+=",RGB.SET_COLOR_LAVANDE"</tag></item>
+	</one-of>
+</item>
+
+<tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/milight";</tag>
+</rule>
+</grammar>

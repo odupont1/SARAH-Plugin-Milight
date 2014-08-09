@@ -1,0 +1,10 @@
+{
+  "modules" : { 
+    "milight"  : {
+      "description": "Pilotage d'ampoules WiFi (Milight, easy bulb, ...).",
+      "version" : "1.1",
+	  "milight_ip" : "[FIXME]",
+	  "milight_port" : "[FIXME - Default : 8899]"
+    }
+  }
+}

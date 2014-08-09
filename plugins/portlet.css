@@ -1,0 +1,15 @@
+.plugin-gridster.milight .photo IMG {
+  width: 95%;
+  display: block;
+  margin: 0 auto;
+}
+
+.plugin-gridster.milight.front {
+  background: #FFFFFF url('images/mi-light-2.jpg') center 2px;
+  background-size:   160px 160px;
+  background-repeat: no-repeat;
+}
+
+.plugin-gridster.milight.back {
+  background: #FFFFFF;
+}

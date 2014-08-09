@@ -1,0 +1,37 @@
+{
+    "name": "limitless-gem",
+    "version": "0.2.1",
+    "author": "Gembly BV",
+    "description": "Simple NodeJS HTML5 LimitlessLED Lightbulb controller",
+    "keywords": [
+        "LED",
+        "LimitlessLED",
+        "MiLight",
+        "EasyBulb",
+        "WiFi",
+        "RGB",
+        "RGB+W"
+    ],
+    "contributors" : [
+        {"name": "Ale Bles", "email": "ale@gembly.com"},
+        {"name": "Georges Abitbol", "email": "jacques@gembly.com"},
+        {"name": "Bart Smallenburg", "email": "bart@gembly.com"}
+    ],
+    "licenses": [
+        {
+            "type": "GNUv2",
+            "url": "https://raw.github.com/gembly/LimitlessGEM/master/LICENSE"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gembly/LimitlessGEM.git"
+    },
+    "dependencies": {
+        "log4js": "0.x.x"
+    },
+    "engines": {
+        "node": "0.10.24"
+    },
+    "main": "./index.js"
+}

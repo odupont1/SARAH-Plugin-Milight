@@ -1,0 +1,109 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rulemilight" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+
+  <rule id="rulemilight" scope="public">
+    <tag>out.action=new Object(); </tag> 
+    <item>Sarah</item>
+    <one-of>
+      <item>
+        <ruleref uri="#ruleAllume"/><tag>out.action = rules.ruleAllume;</tag>
+      </item>
+      <item>
+        <ruleref uri="#ruleEteins"/><tag>out.action = rules.ruleEteins;</tag>
+      </item>
+    </one-of>
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/milight";</tag>
+  </rule>
+
+	<!-- Allume la/les lampes -->
+	<rule id="ruleAllume">
+		<tag>out.action=new Object(); </tag>
+		<item repeat="0-1">
+			<one-of>
+				<item>Allume</item>
+				<item>colore </item>
+				<item>change la couleur de </item>
+				<item>passe </item>				
+			</one-of>
+			
+			<!-- Groupe(s)/Zone(s)/Lampe(s) -->
+			<one-of>
+				<item>la lampe du salon		<tag>out.action.action="RGBW.ZONE_1_ON,RGBW.ZONE_1_WHITE";</tag></item>
+				<item>la lumière du salon	<tag>out.action.action="RGBW.ZONE_1_ON,RGBW.ZONE_1_WHITE";</tag></item>
+				<item>le salon				<tag>out.action.action="RGBW.ZONE_1_ON,RGBW.ZONE_1_WHITE";</tag></item>				
+				<item>la lampe du couloir	<tag>out.action.action="RGBW.ZONE_2_ON,RGBW.ZONE_2_WHITE";</tag></item>
+				<item>la lumière du couloir	<tag>out.action.action="RGBW.ZONE_2_ON,RGBW.ZONE_2_WHITE";</tag></item>
+				<item>le couloir			<tag>out.action.action="RGBW.ZONE_2_ON,RGBW.ZONE_2_WHITE";</tag></item>				
+				
+			</one-of>
+			
+			<!-- Couleurs -->
+			<!-- facultatif -->
+			<!-- le action+=",...." ajoute la commande à la précédente -->
+			<item repeat="0-1">
+			<one-of>
+				<item>en blanc			<tag>out.action.action+=",RGBW.DISCO_MODE_PREVIOUS";</tag></item>         
+				<item>en bleu			<tag>out.action.action+=",RGBW.SET_COLOR_BLUE";</tag></item>
+				<item>en bleu roi		<tag>out.action.action+=",RGBW.SET_COLOR_BABY_BLUE";</tag></item>
+				<item>en fuchia			<tag>out.action.action+=",RGBW.SET_COLOR_FUCHIA";</tag></item>
+				<item>en lila			<tag>out.action.action+=",RGBW.SET_COLOR_LILA";</tag></item>
+				<item>en lavande		<tag>out.action.action+=",RGBW.SET_COLOR_LAVANDE";</tag></item>
+				<item>en violet			<tag>out.action.action+=",RGBW.SET_COLOR_VIOLET";</tag></item>
+				<item>en aqua			<tag>out.action.action+=",RGBW.SET_COLOR_AQUA";</tag></item>
+				<item>en mente			<tag>out.action.action+=",RGBW.SET_COLOR_MINT";</tag></item>
+				<item>en écume de mer	<tag>out.action.action+=",RGBW.SET_COLOR_SEAFOAM_GREEN";</tag></item>
+				<item>en vert			<tag>out.action.action+=",RGBW.SET_COLOR_GREEN";</tag></item>
+				<item>en citron vert	<tag>out.action.action+=",RGBW.SET_COLOR_LIME_GREEN";</tag></item>
+				<item>en jaune			<tag>out.action.action+=",RGBW.SET_COLOR_YELLOW";</tag></item>
+				<item>en jaune orange	<tag>out.action.action+=",RGBW.SET_COLOR_YELLOW_ORANGE";</tag></item>
+				<item>en orange			<tag>out.action.action+=",RGBW.SET_COLOR_ORANGE";</tag></item>
+				<item>en rouge			<tag>out.action.action+=",RGBW.SET_COLOR_RED";</tag></item>
+				<item>en rose			<tag>out.action.action+=",RGBW.SET_COLOR_PINK";</tag></item>
+			</one-of>
+			</item>
+			
+			<!-- Luminosité -->
+			<!-- facultatif -->
+			<!-- le action+=",...." ajoute la commande à la précédente -->
+			<item repeat="0-1">
+			<one-of>
+				<item>faiblement<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_1"</tag></item>
+				<item>à 10%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_1";</tag></item>
+				<item>à 20%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_2";</tag></item>
+				<item>à 30%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_4";</tag></item>
+				<item>à 40%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_6";</tag></item>
+				<item>à 50%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_8"</tag></item>				
+				<item>à 60%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_10";</tag></item>
+				<item>à 70%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_12";</tag></item>
+				<item>à 80%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_14";</tag></item>
+				<item>à 90%		<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_15";</tag></item>
+				<item>à 100%	<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_16";</tag></item>
+				<item>à fond	<tag>out.action.action+=",RGBW.SET_BRIGHTNESS_16"</tag></item>							
+			</one-of>
+			</item>
+
+		</item>
+	</rule>	
+	
+	<!-- Eteins la/les lampes -->	
+	<rule id="ruleEteins">
+		<tag>out.action=new Object(); </tag>
+		<item repeat="0-1">
+			<one-of>
+				<item>éteins</item>
+			</one-of>
+			
+			<one-of>
+				<item>la lampe du salon		<tag>out.action.action="RGBW.ZONE_1_OFF";</tag></item>
+				<item>la lumière du salon	<tag>out.action.action="RGBW.ZONE_1_OFF";</tag></item>
+				<item>le salon				<tag>out.action.action="RGBW.ZONE_1_OFF";</tag></item>
+				<item>la lampe du couloir	<tag>out.action.action="RGBW.ZONE_2_OFF";</tag></item>
+				<item>la lumière du couloir	<tag>out.action.action="RGBW.ZONE_2_OFF";</tag></item>
+				<item>le couloir			<tag>out.action.action="RGBW.ZONE_2_OFF";</tag></item>
+				<item>tout					<tag>out.action.action="RGBW.ALL_OFF";</tag></item>
+			</one-of>
+			
+		</item>
+	</rule>		
+
+
+</grammar>

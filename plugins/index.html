@@ -1,0 +1,383 @@
+﻿<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery("#plugin-menu .plugin-nav a").click(function () {
+            jQuery("#plugin-menu .content > div").hide();
+            jQuery("#plugin-menu .plugin-nav ul li").removeClass("active");
+            jQuery(this).parent().addClass("active");
+            jQuery("#" + jQuery(this).data("toggle")).show();
+            return false;
+        });
+    });
+</script>
+
+<p class="page-header">
+	<span class="lead">Ce module permet de piloter les lampes Mi.Light (HUE Like)</span></br></br>
+</p>
+<!-- JEROME -->
+<div id="plugin-menu" class="row">
+    <!--Navigation-->
+    <div class="stretch col-md-3 well plugin-nav">
+        <ul class="nav nav-pills nav-stacked">
+            <strong>Configuration</strong>
+				<li><a href="#" data-toggle="plugin-configuration1">Configuration du pont wifi </a></li>
+				<li><a href="#" data-toggle="plugin-configuration2">Configuration du plugin.</a></li>
+            <strong>Utilisation</strong>
+				<li><a href="#" data-toggle="plugin-utilisation">Les commandes.</a></li>
+				<li><a href="#" data-toggle="plugin-exemple">Exemples</a></li>
+            <strong>Auteurs</strong>
+				<li><a href="#" data-toggle="plugin-auteurs">Auteurs.</a></li>				
+        </ul>
+    </div>
+	<!--Content-->
+	<div class="col-md-9 well content">
+	<!--Version-->
+		<div class="panel panel-primary" id="plugin-version-xbmc" > 
+			<div class="panel-heading">Versions</div>
+			<div class="panel-body">
+				<ul class="unstyled" >
+					<li><strong> Version 1.1 : </strong></br>
+					[X] Prise en charge des ampoules RGBW</br>
+					[X] Prise en charge des ampoules WHITE</br>
+					[X] Prise en charge des ampoules RGB</br>
+					[X] Fonction REPEAT pour créer un cycle de commandes</br>
+					</li></br>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="panel panel-primary" id="plugin-configuration1" style="display: none;"> 
+			<div class="panel-heading">Configuration</div>
+			<div class="panel-body">
+				<b>A) Première connexion du pont wifi.</b></br></br>
+				<ul class="unstyled" >
+					<li>		
+						<b>1) Téléchargement et installation de l'application :</b></br>
+						</br>
+						Téléchargez et installez l'application pour téléphones Android ou tablettes.</br>
+						Recherchez sur le "Google Playstore" le terme : "mi-light".</br>
+						Ou</br>
+						Téléchargez et installez l'application pour téléphones Apple ou tablettes.</br>
+						Recherchez sur l' "Appstore" le terme : "mi-light".</br></br>
+					</li>
+					
+					<li>
+						<b>2) Le "pont wifi", premier contact :</b></br>
+						</br>
+						- Branchez le "pont wifi" (câble USB ou alimentation externe) et  attendez 5 à 10 secondes, le voyant <b>"SYS"</b> devrait clignoter en rouge.</br>
+						- Allez dans les "paramètres Wifi" de votre téléphone ou tablette, recherchez le réseau Wifi (SSID) <b>"MiLight"</b> et établissez la connexion.</br>
+						- Démarrez l'application "Mi-light"</br>
+						- Le "pont wifi" devrait être détectée et sélectionnable dans la liste.</br>
+						- Vous devriez avoir la possibilité de renommer le "pont wifi" par le nom de votre choix.</br>
+						- Cliquez maintenant sur le nom de le "pont wifi" dans la liste.</br>
+						- Sélectionnez sur l'écran, en fonction du type d'ampoules (White, RGB ou RGBW) l'interface correspondante :</br></br>
+
+						<u>Pour les lampes RGBW :</u></br>
+						<TABLE BORDER="0" cellpadding="10"><TR>
+						<TD><img src="assets/milight/images/interface_rgbw.jpg" alt="Mi.Light pour lampes RGBW"/></TD>
+						<TD >
+						Pour synchroniser l'ampoule, il suffit tout simplement d'éteindre la lampe, de l'allumer à nouveau et d'appuyer sur le "I" de l'un des boutons marqués 1,2,3 ou 4.</br>
+						Les numéros 1,2,3 ou 4 représentent les "groupes" ou "zones" qui seront utilisés plus tard.</br>
+						En appuyant directement sur les numéros 1,2,3 ou 4, vous pouvez renommer le bouton.</br>
+						Lorsque vous aurez changé la couleur d'une ampoule et que vous souhaitez la remettre en "blanc", il suffit d'appuyer sur le "I" du bouton correspondant à l'ampoule pendant 3 secondes.</br>
+						</TD>
+						</TR></TABLE>
+						</br>
+
+						<u>Pour les lampes RGB :</u></br>
+						<TABLE BORDER="0" cellpadding="10"><TR>
+						<TD><img src="assets/milight/images/interface_rgb.jpg" alt="Mi.Light pour lampes RGB"/></TD>
+						<TD>
+						Pour synchroniser l'ampoule, il suffit tout simplement d'éteindre la lampe, de l'allumer à nouveau et d'appuyer une fois sur le bouton de couleur pourpre (comme indiqué sur l'image).</br>
+						L'ampoule devrait clignoter 3 fois pour indiquer la synchronisation.</br>
+						</TD>
+						</TR></TABLE>
+						</br>
+
+						<u>Pour les ampoules White :</u></br>
+						<TABLE BORDER="0" cellpadding="10"><TR>
+						<TD><img src="assets/milight/images/interface_white.jpg" alt="Mi.Light pour lampes WHITE"/></TD>
+						<TD>
+						Pour synchroniser l'ampoule, il suffit tout simplement d'éteindre la lampe, de l'allumer à nouveau et d'appuyer sur le "I" de l'un des boutons marqués 1,2,3 ou 4.
+						Les numéros 1,2,3 ou 4 représentent les "groupes" ou "zones" qui seront utilisés plus tard.
+						En appuyant directement sur les numéros 1,2,3 ou 4, vous pouvez renommer le bouton.</br>
+						</TD>
+						</TR></TABLE>
+						</br>
+					</li>
+					<li>
+						<b>3) La télécommande :</b></br>
+						</br>
+						Si vous avez acheté une télécommande, elle se synchronise et fonctionne comme l'application "Mi-Light".</br>
+						Réalisez les opérations décrient ci-dessus en fonction du type d'ampoules en votre possession.</br></br>
+					</li>
+					<li>
+						<b>4) Dés association d'une ampoule :</b></br>
+						</br>
+						Pour supprimer une ampoule d'un groupe ou la remettre à « zéro », il suffit simplement d'éteindre la lampe, de l'allumer à nouveau et d'appuyer sur le bouton "I" correspondant au groupe pendant 5 secondes.</br>
+						L'ampoule devrait clignoter 5 fois pour indiquer que l'opération c'est bien déroulée.</br></br>
+					</li>
+
+				</ul>
+				</br>
+				<b>B) Integrez le pont wifi dans votre réseau Wifi.</b></br></br>
+				<ul class="unstyled" >
+					<li>		
+					La première chose à faire est de "récupérer" l'adresse IP par défaut du "pont wifi".</br>
+					</br>
+					En fonction des versions du firmware de celui-ci, l'adresse IP peut varier.</br>
+					Voici celles que l'ont a rencontrés. Si vous en trouvés d'autres, merci de nous les indiquer, nous les ajouterons dans cette documentations.</br>
+					</br>
+					<ul class="unstyled" >
+						<li><b>10.10.100.254 / 255.255.255.0</b></li>
+						<li><b>192.168.1.100 / 255.255.255.0</b></li>
+					</ul>
+					</br>
+					Normalement, le "pont wifi" est serveur DHCP par defaut.</br>
+					</br>
+					Donc pour pouvoir vous y connecter et modifier sa configuration, deux choix s'offrent à vous :</br>
+					</br>
+					- mettre votre PC, Tablette en "client DHCP",</br>
+					- modifier l'adresse IP de votre PC, Tablette pour être dans le même "range" que le "pont wifi".</br>
+					</br>
+					Une fois cette étape réalisée, tapez dans votre Navigateur Internet l'une des URL suivantes :</br>
+					</br>
+					<ul class="unstyled" >
+						<li><b>http://10.10.100.254/home.html</b></li>
+						<li><b>http://192.168.1.100/home.html</b></li>
+					</ul>
+					</br>
+					Selon la version du Firmware, les "login / password" pourront être les suivants :</br>
+					</br>
+					<ul class="unstyled" >
+						<li><b>admin / admin</b></li>
+						<li><b>admin / 000000</b></li>
+					</ul>
+					</br>
+					</br>
+					<u>Les "choses" sérieuses commencent :</u></br>
+					</br>
+					Sélectionnez le type de réseau sur : Sta</br>
+					Renseignez le SSID avec le nom de votre réseau wifi.</br>
+					Choisissez le mode d'encryption correspondant à celui de votre réseau.</br>
+					Si disponible, renseignez "key format" sur "ASCII".</br>
+					Entrez le mot de passe de votre connexion wifi password dans le champ "Encryption Key".</br>
+					Dans "Hostname", renseignez le nom à donner au "pont wifi".</br>
+					</br>
+					Sauvegardez (Apply)</br>
+					</br>
+					</br>
+					Configuration réseau, deux possibilités :</br>
+					</br>
+					<b>En IP fixe :</b></br>
+					</br>
+					<TABLE BORDER="0" cellpadding="10"><TR>
+					<TD valign=top>
+					Décochez <b>"DHCP Enable"</b>,</br>
+					IP Address : une IP de votre réseau (ex : 192.168.1.100)</br>
+					Subnet Mask : 255.255.255.0</br>
+					Gateway Address : l'IP de votre box ou routeur (ex : 192.168.1.254)</br>
+					DNS Address: 8.8.8.8 (serveur de Google ou celui de votre Box)</br>
+					</br>
+					Sauvegardez (Apply)</br>
+					</TD>
+					<TD>
+					<img src="assets/milight/images/wifi_network.png" alt="Exemple de configuration réseau"/>
+					</TD>
+					</TR></TABLE>
+					</br>
+					Dans le menu de gauche, sélectionnez <b>"system"</b> et <b>"Restart System"</b>.</br>
+					Si l'option n'est pas présente, comme sur le mien, débranchez et rebranchez l'alimentation électrique du "pont wifi".</br>
+					</br>
+					</br>
+					<b>En DHCP :</b></br>
+					</br>
+					Cochez <b>"DHCP Enable"</b>,</br>
+					</br>
+					Sauvegardez (Apply)</br>
+					</br>
+					Dans le menu de gauche, sélectionnez <b>"system"</b> et <b>"Restart System"</b>.</br>
+					Si l'option n'est pas présente, comme sur le mien, débranchez et rebranchez l'alimentation éléctrique du "pont wifi".</br>
+					Une fois celui-ci redémarré, allez voir dans votre Box / Routeur, l'adresse IP attribuée à votre "pont wifi".</br>
+					</br></br>
+					<b><u>Note :</u> En cas de probleme ou de non fonctionnement, vous pouvez faire un "Hard Reset" en maintenant 3 secondes le bouton "Reset" (à coté du port USB).</br>
+					Le pont wifi devrait redémarrer en configuration d'usine.</b></br>
+					</br></br>
+					</li>
+
+				</ul>
+				
+			</div>
+		</div>
+
+		<div class="panel panel-primary" id="plugin-configuration2" style="display: none;"> 
+			<div class="panel-heading">Configuration</div>
+			<div class="panel-body">
+				<ul class="unstyled" >
+					<li> Configuration du plugin.<br>
+					</br>
+					Indiquer dans la configuration du plugin les informations suivantes :</br>
+					<ul class="unstyled" >
+						<li><b>l'adresse IP du pont wifi</b></li>
+						<li><b>le port UDP du pont wifi : 8899 ou 50000 (selon les modeles)</b></li>
+					</ul>
+					</br>
+					<img src="assets/milight/images/params_plugin.jpg" alt="Parametrage du plugin"/>
+					</li></br>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="panel panel-primary" id="plugin-utilisation" style="display: none;"> 
+			<div class="panel-heading">Utilisation</div>
+			<div class="panel-body">
+				Le plugin Mi-Light permet de "piloter" simplement les trois types d'ampoules actuellement disponibles : <b>White, RGB et RGBW</b>.</br>
+				</br>
+				Il vous sera possible de :
+				</br>
+				<ul class="unstyled" >
+					<li>allumer / éteindre,</b></li>
+					<li>changer la couleur parmi 255 teintes possibles (ou pas ! pour l'ampoule White),</b></li>
+					<li>changer la luminosité,</b></li>
+					<li>créer des groupes de lampes </br>(par pont wifi: 4 groupes pour les RGBW, 4 groupes pour les WHITE et un unique groupe pour les RGB),</b></li>
+					<li>créer vos propres scénarios en mixant les différentes commandes en les séparant par une virgule ","</b></li>
+				</ul></br>
+				Points important:
+				<ul class="unstyled" >
+				<li>
+					<strong>Dans le XML, la commande ou la suite de commandes, séparées par une virgule (scénario), doit être affectée à la variable <em>out.action.action .</em></strong>
+				</li>
+				<li>
+					<strong>Les commandes s'appliquent au dernier groupe piloté par un Zone_x_ON / Zone_x_OFF / ALL_ON / ALL_OFF</strong>
+				</li>
+				<li>
+					<strong>Dans le XML il est possible d'additionner à elle même la variable <em>out.action.action</em> afin de générer des scénarios complexes.</strong>
+					(out.action.action <strong>+=</strong> ".....")
+				</li>
+				</ul></br></br>
+				
+				<strong>A) Les commandes propres aux types d'ampoule.</strong></br>
+				L'ensemble des commandes disponibles pour chaque type d'ampoule est consultable dans les fichiers suivants :
+				<ul class="unstyled" >
+					<li><b>ampoule WHITE : "./lib/white.js"</b></li>
+					<li><b>ampoule RGB : "./lib/rgb.js"</b></li>
+					<li><b>ampoule RGBW : "./lib/rgbw.js"</b></li>
+				</ul>
+				Dans le XML, Il faut rajouter <b>WHITE.</b> ou <b>>RGB.</b> ou <b>RGBW.</b> devant la commande souhaitée.</br></br>
+				Par exemple: 
+				<ul class="unstyled" >
+					<li><b>ampoule WHITE : out.action.action="WHITE.ZONE_1_NIGHT_MODE";</b></li>
+					<li><b>ampoule RGB : out.action.action="RGB.ALL_ON";</b></li>
+					<li><b>ampoule RGBW : out.action.action="RGBW.ZONE_1_WHITE";</b></li>
+				</ul></br></br>
+				
+				<strong>B) Les délais:</strong></br>
+				Mi.Light impose un délai de 100ms entre une commande "ON/OFF" et la commande suivante (pour faire varier la luminosité par exemple.). Le plugin intègre ce temps par défaut
+				mais il est possible d'indiquer un temps different si vous souhaitez allonger ou réduire.</br>
+				Pour cela, insérez la valeur en milliseconde du délai souhaité entre les 2 commandes.</br>
+				<strong>out.action.action="RGBW.ZONE_1_WHITE,10000,RGB.ALL_OFF"; </br>
+				(allumer la zone 1 en blanc puis éteindre les lampes RGB 10 secondes plus tard)</strong></br></br></br></br>
+				
+				<strong>C) Les boucles :</strong></br>
+				Une commande supplémentaire <b>"CMD.REPEAT_ON_X / CMD.REPEAT_OFF"</b> permet de réaliser des boucles de commandes, pour des actions plus complexes.</br>
+				La valeur de <b>"X"</b> représente le nombre d'itération de la boucle.</br>
+				Les commandes comprises entre les "balises" "REPEAT_ON_X / REPEAT_OFF" sont répétées X fois.</br>
+				<strong>out.action.action="RGBW.ZONE_1_ON, CMD.REPEAT_ON_5, RGBW.SET_COLOR_RED, RGBW.SET_COLOR_189, CMD.REPEAT_OFF, RGBW.ZONE_1_OFF"</br>
+				(fait clignoter en rouge 5 fois)</strong></br></br>
+				</b></br>
+				
+				<strong>D) Exemples de XML:</strong></br>
+				<ul>
+				<li>
+					...</br>
+					< item >Sarah< /item ></br>
+					< item ></br>fait clignoter le salon en rouge 5 fois < tag> out.action.action="RGBW.ZONE_1_ON, CMD.REPEAT_ON_5, RGBW.SET_COLOR_RED, RGBW.SET_COLOR_189, CMD.REPEAT_OFF, RGBW.ZONE_1_OFF"< /tag ></br>< /item ></br>
+					...
+				</li>
+				<li>
+					...</br>
+					< item >Sarah< /item ></br>
+					< item >monte la luminosité du salon < tag >out.action.action="WHITE.ZONE_1_ON,50,WHITE.BRIGHTNESS_UP,50,WHITE.BRIGHTNESS_UP,50,WHITE.BRIGHTNESS_UP"< /tag >< /item ></br>
+					...</br>
+				</li>
+				<li>
+					...</br>
+					< item >Sarah< /item ></br>
+					< item >colore le salon en rouge < tag >out.action.action="RGB.ALL_ON,RGB.SET_COLOR_RED"< /tag >< /item ></br>
+					...
+				</li>
+				</ul>
+				</br></br>
+				
+				<strong>E) Note :</strong></br>
+				Choisissez bien votre / vos type(s) d'ampoule(s).</br>
+				Elles n'ont pas toutes les mêmes possibilités. L'ampoule RGBW semble être le bon compromis.</br>
+				</br>
+				<u>WHITE :</u></br>
+				<ul class="unstyled" >
+					<li><b>couleurs : non</b></li>
+					<li><b>création de groupes/zones : oui</b></li>
+					<li><b>gestion de la luminosité : oui</b></li>
+					<li><b>allumer/éteindre : oui (heureusement ^^ )</b></li>	
+				</ul>
+				</br>
+				<u>RGB :</u></br>
+				<ul class="unstyled" >
+					<li><b>couleurs : oui</b></li>
+					<li><b>création de groupes/zones : non</b></li>
+					<li><b>gestion de la luminosité : oui</b></li>
+					<li><b>allumer/éteindre : oui</b></li>	
+				</ul>
+				</br>
+				<u>RGBW :</u></br>
+				<ul class="unstyled" >
+					<li><b>couleurs : oui</b></li>
+					<li><b>création de groupes/zones : oui</b></li>
+					<li><b>gestion de la luminosité : oui</b></li>
+					<li><b>allumer/éteindre : oui</b></li>	
+				</ul>
+				</br>
+				</br>
+			</div>
+		</div>
+
+		<div class="panel panel-primary" id="plugin-exemple" style="display: none;"> 
+			<div class="panel-heading">Exemples</div>
+			<div class="panel-body">
+			</br>
+				Des exemples de configurations (fichier "milight.xml") ont été mis dans le répertoire <b>"exemples"</b>.</br>
+				</br>
+				<ul class="unstyled" >
+					<li>ampoule RGB : <b>rgb.milight.xml</b></li>
+					<li>ampoule RGBW : <b>rgbw.milight.xml</b></li>
+					<li>ampoule WHITE : <b>white.milight.xml</b></li>
+				</ul>				
+				</br>
+				Le même "exemple" est repris dans les trois configurations mais en l'adaptant aux possibilités de chaque modèle d'ampoule.</br>
+				</br>
+				Pour utiliser ces "exemples", il suffit de renommer un de ces fichiers en <b>"milight.xml"</b> et de la copier à la "racine" du plugin Milight.</br>
+				</br>
+				Vous pouvez bien sur, au sein d'un même fichier "milight.xml", utiliser plusieurs modèles d'ampoules en même temps.</br>
+				</br></br>
+			</div>
+		</div>
+		
+		<div class="panel panel-primary" id="plugin-auteurs" style="display: none;"> 
+			<div class="panel-heading">Les Auteurs</div>
+			<div class="panel-body">
+			</br>
+				Eh oui, ont étaient plusieurs pour faire "ça" !.</br>
+				</br>
+				<ul class="unstyled" >
+					<li>Codeur fou n°1 : <b>Jérôme VEYRET</b></li>
+					<li>Codeur fou n°2 : <b>Olivier DUPONT</b></li>
+				</ul>				
+				</br>
+				</br>
+			</div>
+		</div>
+		
+
+	</div>
+</div>

@@ -1,0 +1,45 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="rulemilight_example1" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+<rule id="rulemilight_example1" scope="public">
+<tag>out.action=new Object(); </tag>
+
+<!-- ****************************************************** -->
+<!-- Fichier exemple, si vous utilisez une ampoule WHITE,	-->
+<!-- renommez ce fichier en : "milight.xlm"					-->
+<!-- et copiez le a la racine du repertoire : "milight"		-->
+<!-- ****************************************************** -->
+
+<item >Sarah</item>
+<!-- Le plugin est capable de gérer plusieurs commandes à la suite séparées par une virgule -->
+<!-- Attention, les commandes sont envoyées par le pont wifi au dernier groupe activé par un 'ZONE_X_ON/ALL_ON' -->
+
+<one-of>
+	<!-- obligatoire , indique le groupe à contrôler -->
+	<item>colore le salon <tag>out.action.action="WHITE.ZONE_1_ON"</tag></item>
+	<item>allume le salon <tag>out.action.action="WHITE.ZONE_1_ON,WHITE.ZONE_1_FULL_BRIGHTNESS"</tag></item>
+	<item>colore la chambre <tag>out.action.action="WHITE.ZONE_2_ON"</tag></item>
+	<item>allume la chambre <tag>out.action.action="WHITE.ZONE_2_ON,WHITE.ZONE_2_FULL_BRIGHTNESS"</tag></item>
+	<item>fait clignoter le salon fois <tag>out.action.action="WHITE.ZONE_1_ON,CMD.REPEAT_ON_5,WHITE.ZONE_1_OFF,WHITE.ZONE_1_ON,CMD.REPEAT_OFF"</tag></item>
+</one-of>
+
+<item repeat="0-1">
+	<one-of>
+		<!-- facultatif , indique le niveau de puissance souhaité -->
+		<!-- le action+=",...." ajoute la commande à la précédente -->
+		<item>faiblement <tag>out.action.action+=",CMD.REPEAT_ON_7,BRIGHTNESS_DOWN,CMD.REPEAT_OFF"</tag></item>
+		<item>à 50%<tag>out.action.action+=",CMD.REPEAT_ON_5,RGB.BRIGHTNESS_UP,CMD.REPEAT_OFF"</tag></item>
+		<item>à fond<tag>out.action.action+=",CMD.REPEAT_ON_9,RGB.BRIGHTNESS_UP,CMD.REPEAT_OFF"</tag></item>
+	</one-of>
+</item>
+
+<item repeat="0-1">
+	<one-of>
+		<!-- facultatif , permet d'autre action sur d'autre groupe-->
+		<!-- le action+=",...." ajoute la commande à la précédente -->
+		<item>puis éteind le salon <tag>out.action.action+=",WHITE.ZONE_1_OFF"</tag></item>
+		<item>puis éteind la chambre<tag>out.action.action+=",WHITE.ZONE_2_OFF"</tag></item>
+	</one-of>
+</item>
+
+<tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/milight";</tag>
+</rule>
+</grammar>
